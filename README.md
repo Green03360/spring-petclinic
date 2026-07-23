@@ -23,7 +23,7 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic
 ```
 If you are using Maven, you can start the application on the command-line as follows:
-
+o
 ```bash
 ./mvnw spring-boot:run
 ```
