@@ -3,8 +3,8 @@
 # For more info see: https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-java-with-maven
 
 name: Java CI/CD Pipeline with Maven
-
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
