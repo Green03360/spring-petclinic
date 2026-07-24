@@ -3,7 +3,6 @@
 name: Java CI/CD Pipeline with Maven
 
 on:
-  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
@@ -84,7 +83,7 @@ jobs:
         run: |
           scp -o StrictHostKeyChecking=no \
               target/spring-petclinic-*.jar \
-              ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/
+              ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/
 
       - name: Ensure Java is installed on remote
         run: |
@@ -96,4 +95,4 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no \
               ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
-              "nohup java -jar /home/ubuntu/spring-petclinic-*.jar > /home/ubuntu/app.log 2>&1 & disown"
+              "nohup java -jar /home/${{ secrets.EC2_USER }}/spring-petclinic-*.jar > /home/${{ secrets.EC2_USER }}/app.log 2>&1 & disown"
